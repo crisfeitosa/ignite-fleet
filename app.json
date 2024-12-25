@@ -10,7 +10,8 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "cover",
-      "backgroundColor": "#202024"
+      "backgroundColor": "#202024",
+      "enableFullScreenImage_legacy": true
     },
     "ios": {
       "supportsTablet": true
