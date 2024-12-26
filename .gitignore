@@ -1,5 +1,17 @@
 # Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
 
+# Android/IntelliJ
+#
+build/
+.idea
+.gradle
+local.properties
+*.iml
+*.hprof
+
+# Bundle artifacts
+*.jsbundle
+
 # dependencies
 node_modules/
 

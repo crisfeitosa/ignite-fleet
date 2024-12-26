@@ -14,13 +14,15 @@
       "enableFullScreenImage_legacy": true
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.cristianofeitosa.ignitefleet"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#202024"
-      }
+      },
+      "package": "com.cristianofeitosa.ignitefleet"
     },
     "web": {
       "favicon": "./assets/favicon.png"
