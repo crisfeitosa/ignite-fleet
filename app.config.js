@@ -1,4 +1,8 @@
-{
+import * as dotenv from 'dotenv';
+
+dotenv.config();
+
+module.exports = {
   "expo": {
     "name": "ignite-fleet",
     "slug": "ignite-fleet",
@@ -15,7 +19,14 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.cristianofeitosa.ignitefleet"
+      "bundleIdentifier": "com.cristianofeitosa.ignitefleet",
+      "infoPlist": {
+      "CFBundleURLTypes": [
+        {
+          "CFBundleURLSchemes": ["com.googleusercontent.apps.1024345003584-euvlgooh4qn7hfgb07mk2btro64sb6i9"]
+        }
+      ]
+    }
     },
     "android": {
       "adaptiveIcon": {
@@ -28,7 +39,13 @@
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
-      "expo-font"
+      "expo-font",
+      [
+        "@react-native-google-signin/google-signin",
+        {
+          "iosUrlScheme": "com.googleusercontent.apps.1024345003584-euvlgooh4qn7hfgb07mk2btro64sb6i9"
+        }
+      ],
     ]
   }
 }
