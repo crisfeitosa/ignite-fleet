@@ -1,6 +1,6 @@
 import { TouchableOpacity } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { useApp } from '@realm/react';
+import { useApp, useUser } from '@realm/react';
 import { Power } from 'phosphor-react-native';
 import theme from '../../theme';
 
@@ -9,6 +9,7 @@ import { Container, Greeting, Message, Name, Picture } from './styles';
 const blurhash = 'L184i9ofbHof00ayjsay~qj[ayj@';
 
 export function HomeHeader() {
+  const user = useUser();
   const app = useApp();
   const insets = useSafeAreaInsets();
 
@@ -16,12 +17,12 @@ export function HomeHeader() {
 
   function handleLogOut() {
     app.currentUser?.logOut();
-  }
+  };
 
   return (
     <Container style={{ paddingTop }}>
       <Picture 
-        source={{ uri: 'https://github.com/crisfeitosa.png' }}
+        source={{ uri: user?.profile.pictureUrl }}
         placeholder={{ blurhash }}
         transition={1000}
       />
@@ -30,7 +31,7 @@ export function HomeHeader() {
           Olá
         </Message>
         <Name>
-          Cristiano
+          {user?.profile.name}
         </Name>
       </Greeting>
 

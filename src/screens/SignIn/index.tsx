@@ -1,12 +1,12 @@
 import { useState } from 'react';
+import { Alert, Platform } from 'react-native';
 import { GoogleSignin, isErrorWithCode, isSuccessResponse } from '@react-native-google-signin/google-signin';
-import { Realm, useApp, useAuth } from '@realm/react';
+import { Realm, useApp } from '@realm/react';
 import { WEB_CLIENT_ID, IOS_CLIENT_ID } from '@env';
 
 import backgroundImg from '../../assets/background.png';
 import { Button } from '../../components/Button';
 import { Container, Title, Slogan } from './styles';
-import { Alert } from 'react-native';
 
 GoogleSignin.configure({
   scopes: ['email', 'profile',],
@@ -22,7 +22,10 @@ export function SignIn() {
     try {
       setIsAuthenticating(true);
 
-      await GoogleSignin.hasPlayServices();
+      if (Platform.OS === 'android') {
+        await GoogleSignin.hasPlayServices();
+      }
+
       const response = await GoogleSignin.signIn();
 
       if (isSuccessResponse(response)) {

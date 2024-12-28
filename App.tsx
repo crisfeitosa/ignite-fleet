@@ -33,9 +33,9 @@ export default function App() {
             backgroundColor="transparent" 
             translucent 
           />
-          {/* <UserProvider fallback={SignIn}> */}
+          <UserProvider fallback={SignIn}>
             <Home />
-          {/* </UserProvider> */}
+          </UserProvider>
         </SafeAreaProvider>
       </ThemeProvider>
     </AppProvider>
