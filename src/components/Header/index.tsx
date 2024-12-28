@@ -11,10 +11,11 @@ type Props = {
 
 export function Header({ title } : Props) {
   const { COLORS } = useTheme();
-  const { goBack } = useNavigation()
+  const { goBack } = useNavigation();
   const insets = useSafeAreaInsets();
+
   const paddingTop = insets.top + 42;
-  
+
   return (
     <Container style={{ paddingTop }}>
       <TouchableOpacity activeOpacity={0.7} onPress={goBack}>
