@@ -4,6 +4,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { ThemeProvider } from 'styled-components/native';
 import { useFonts, Roboto_400Regular, Roboto_700Bold } from '@expo-google-fonts/roboto';
 import { RealmProvider } from './src/libs/realm';
+import 'react-native-get-random-values';
 
 import { REALM_APP_ID } from '@env';
 
