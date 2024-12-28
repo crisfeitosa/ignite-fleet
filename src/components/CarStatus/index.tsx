@@ -7,10 +7,12 @@ type Props = {
 }
 
 export function CarStatus({ licensePlate = null }: Props) {
-  const Icon = licensePlate ? Key : Car
-  const message = licensePlate ? `Veículo ${licensePlate} em uso. ` : 'Nenhum veículo em uso. '
+  const theme = useTheme();
+
+  const Icon = licensePlate ? Key : Car;
+  const message = licensePlate ? `Veículo ${licensePlate} em uso. ` : 'Nenhum veículo em uso. ';
   const status = licensePlate ? 'chegada' : 'saída';
-  const theme = useTheme()
+
   return (
     <Container>
       <IconBox>
