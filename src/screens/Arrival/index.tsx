@@ -37,9 +37,10 @@ export function Arrival() {
   };
 
   function removeVehicleUsage() {
-    realm.write(() =>{
+    realm.write(() => {
       realm.delete(historic)
     });
+    
     goBack();
   };
 
