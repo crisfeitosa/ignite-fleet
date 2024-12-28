@@ -3,14 +3,15 @@ import { AppProvider, UserProvider } from '@realm/react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { ThemeProvider } from 'styled-components/native';
 import { useFonts, Roboto_400Regular, Roboto_700Bold } from '@expo-google-fonts/roboto';
+import { RealmProvider } from './src/libs/realm';
 
 import { REALM_APP_ID } from '@env';
 
 import theme from './src/theme';
 
-import { Home } from './src/screens/Home';
 import { SignIn } from './src/screens/SignIn';
 import { Loading } from './src/components/Loading';
+import { Routes } from './src/routes';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -34,7 +35,9 @@ export default function App() {
             translucent 
           />
           <UserProvider fallback={SignIn}>
-            <Home />
+            <RealmProvider>
+              <Routes />
+            </RealmProvider>
           </UserProvider>
         </SafeAreaProvider>
       </ThemeProvider>
