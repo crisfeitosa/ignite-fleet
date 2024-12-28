@@ -1,4 +1,7 @@
 import { useRoute } from '@react-navigation/native';
+import { X } from 'phosphor-react-native';
+
+import { ButtonIcon } from '../../components/ButtonIcon';
 import { Header } from '../../components/Header';
 import { Button } from '../../components/Button';
 
@@ -32,8 +35,12 @@ export function Arrival() {
         <Description>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa voluptate atque necessitatibus voluptatibus eveniet rerum maiores neque laborum obcaecati eos debitis deleniti tempore veritatis, voluptates modi, optio ullam quasi dolor!
         </Description>
-        
+
         <Footer>
+          <ButtonIcon 
+            icon={X} 
+          />
+
           <Button title='Registrar chegada' />
         </Footer>
       </Content>
