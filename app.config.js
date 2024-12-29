@@ -46,6 +46,12 @@ module.exports = {
           "iosUrlScheme": "com.googleusercontent.apps.1024345003584-euvlgooh4qn7hfgb07mk2btro64sb6i9"
         }
       ],
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location."
+        }
+      ]
     ]
   }
 }
