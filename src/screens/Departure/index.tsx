@@ -8,6 +8,7 @@ import {
   LocationAccuracy,
   LocationSubscription
 } from 'expo-location';
+import { CarSimple } from 'phosphor-react-native';
 import { useUser } from '@realm/react';
 
 import { useRealm } from '../../libs/realm';
@@ -129,6 +130,7 @@ export function Departure() {
           <Content>
             {currentAddress && (
               <LocationInfo
+                icon={CarSimple}
                 label='Localização atual'
                 description={currentAddress}
               />
