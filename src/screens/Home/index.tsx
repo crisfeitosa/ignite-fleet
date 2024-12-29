@@ -83,7 +83,7 @@ export function Home() {
   useEffect(() => {
     realm.subscriptions.update((mutableSubs, realm) => {
       const historicByUserQuery = realm.objects('Historic').filtered(`user_id = '${user!.id}'`);
-      mutableSubs.add(historicByUserQuery, { name: 'hostoric_by_user' });
+      mutableSubs.add(historicByUserQuery, { name: 'historic_by_user' });
     })
   },[realm]);
 
