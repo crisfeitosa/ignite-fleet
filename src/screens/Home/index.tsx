@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Alert, FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { CloudArrowUp } from 'phosphor-react-native';
 import { ProgressDirection, ProgressMode } from 'realm';
 import Toast from 'react-native-toast-message';
 import { useUser } from '@realm/react';
@@ -14,6 +15,7 @@ import { useQuery, useRealm } from '../../libs/realm';
 import { Historic } from '../../libs/realm/schemas/Historic';
 
 import { HistoricCard, HistoricCardProps } from '../../components/HistoricCard';
+import { TopMessage } from '../../components/TopMessage';
 import { CarStatus } from '../../components/CarStatus';
 import { HomeHeader } from '../../components/HomeHeader';
 
@@ -27,6 +29,7 @@ export function Home() {
 
   const [vehicleInUse, setVehicleInUse] = useState<Historic | null>(null);
   const [vehicleHistoric, setVehicleHistoric] = useState<HistoricCardProps[]>([]);
+  const [percetageToSync, setPercentageToSync] = useState<string | null>(null);
 
   function handleRegisterMoviment() {
     if(vehicleInUse?._id) {
@@ -76,12 +79,17 @@ export function Home() {
     
     if(percentage === 100) {
       await saveLastSyncTimestamp();
-      fetchHistoric();
-      
+      await fetchHistoric();
+      setPercentageToSync(null);
+
       Toast.show({
         type: 'info',
         text1: 'Todos os dados estão sincronizado.'
       })
+    }
+
+    if(percentage < 100) {
+      setPercentageToSync(`${percentage.toFixed(0)}% sincronizado.`)
     }
   };
 
@@ -129,6 +137,13 @@ export function Home() {
 
   return (
     <Container>
+      {percetageToSync && (
+        <TopMessage
+          title={percetageToSync}
+          icon={CloudArrowUp}
+        />
+      )}
+
       <HomeHeader />
 
       <Content>
