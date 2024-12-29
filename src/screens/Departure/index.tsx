@@ -17,6 +17,8 @@ import { Button } from '../../components/Button';
 import { Header } from '../../components/Header';
 import { TextAreaInput } from '../../components/TextAreaInput';
 import { LicensePlateInput } from '../../components/LicensePlateInput';
+
+import { getAddressLocation } from '../../utils/getAddressLocation';
 import { licensePlateValidate } from '../../utils/licensePlateValidate';
 
 import { Container, Content, Message } from './styles';
@@ -80,7 +82,10 @@ export function Departure() {
       accuracy: LocationAccuracy.High,
       timeInterval: 1000
     }, (location) => {
-      console.log(location);
+      getAddressLocation(location.coords)
+      .then(address => {
+        console.log(address)
+      })
     }).then(response => subscription = response);
 
     return () => {
