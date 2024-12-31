@@ -25,10 +25,11 @@ import { LocationInfo } from '../../components/LocationInfo';
 import { TextAreaInput } from '../../components/TextAreaInput';
 import { LicensePlateInput } from '../../components/LicensePlateInput';
 
+import { openSettings } from '../../utils/openSettings';
 import { getAddressLocation } from '../../utils/getAddressLocation';
 import { licensePlateValidate } from '../../utils/licensePlateValidate';
 
-import { Container, Content, Message } from './styles';
+import { Container, Content, Message, MessageContent } from './styles';
 
 export function Departure() {
   const { goBack } = useNavigation();
@@ -132,11 +133,14 @@ export function Departure() {
     return (
       <Container>
         <Header title='Saída' />
-        <Message>
-          Você precisa permitir que o aplicativo tenha acesso a 
-          localização para acessar essa funcionalidade. Por favor, acesse as
-          configurações do seu dispositivo para conceder a permissão ao aplicativo.
-        </Message>
+        <MessageContent>
+          <Message>
+            Você precisa permitir que o aplicativo tenha acesso a 
+            localização para acessar essa funcionalidade. Por favor, acesse as
+            configurações do seu dispositivo para conceder a permissão ao aplicativo.
+          </Message>
+          <Button title='Abrir configurações' onPress={openSettings} />
+        </MessageContent>
       </Container>
     )
   };
