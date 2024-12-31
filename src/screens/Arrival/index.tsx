@@ -12,6 +12,7 @@ import { useObject, useRealm } from '../../libs/realm';
 import { getLastAsyncTimestamp } from '../../libs/asyncStorage/syncStorage';
 import { Historic } from '../../libs/realm/schemas/Historic';
 
+import { Locations } from '../../components/Locations';
 import { Map } from '../../components/Map';
 import { ButtonIcon } from '../../components/ButtonIcon';
 import { Header } from '../../components/Header';
@@ -111,6 +112,11 @@ export function Arrival() {
       )}
 
       <Content>
+        <Locations 
+          departure={{ label: 'Saída', description: 'Saída teste' }}
+          arrival={{ label: 'Chegada', description: 'Chegada teste' }}
+        />
+
         <Label>
           Placa do veículo
         </Label>
