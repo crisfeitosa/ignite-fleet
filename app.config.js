@@ -20,6 +20,9 @@ module.exports = {
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.cristianofeitosa.ignitefleet",
+      "config": {
+        "googleMapsApiKey": process.env.GOOGLE_MAPS_API_KEY
+      },
       "infoPlist": {
       "CFBundleURLTypes": [
         {
@@ -33,7 +36,12 @@ module.exports = {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#202024"
       },
-      "package": "com.cristianofeitosa.ignitefleet"
+      "package": "com.cristianofeitosa.ignitefleet",
+      "config": {
+        "googleMaps": {
+          "apiKey": process.env.GOOGLE_MAPS_API_KEY
+        } 
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png"
