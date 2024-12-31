@@ -15,6 +15,7 @@ import { Historic } from '../../libs/realm/schemas/Historic';
 import { getAddressLocation } from '../../utils/getAddressLocation';
 
 import { LocationInfoProps } from '../../components/LocationInfo';
+import { Loading } from '../../components/Loading';
 import { Locations } from '../../components/Locations';
 import { Map } from '../../components/Map';
 import { ButtonIcon } from '../../components/ButtonIcon';
@@ -37,6 +38,7 @@ export function Arrival() {
   const title = historic?.status === 'departure' ? 'Chegada' : 'Detalhes';
 
   const [dataNotSynced, setDataNotSynced] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [departure, setDeparture] = useState<LocationInfoProps>({} as LocationInfoProps)
   const [arrival, setArrival] = useState<LocationInfoProps | null>(null)
   const [coordinates, setCoordinates] = useState<LatLng[]>([]);
@@ -118,11 +120,17 @@ export function Arrival() {
         description: dayjs(new Date(lastLocation.timestamp)).format('DD/MM/YYYY [às] HH:mm')
       })
     }
+
+    setIsLoading(false);
   };
 
   useEffect(() => {
     getLocationsInfo();
   },[historic]);
+
+  if(isLoading) {
+    return <Loading />
+  };
 
   return (
     <Container>
