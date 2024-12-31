@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Alert } from 'react-native';
+import { LatLng } from 'react-native-maps';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { BSON } from 'realm';
 import { X } from 'phosphor-react-native';
@@ -11,6 +12,7 @@ import { useObject, useRealm } from '../../libs/realm';
 import { getLastAsyncTimestamp } from '../../libs/asyncStorage/syncStorage';
 import { Historic } from '../../libs/realm/schemas/Historic';
 
+import { Map } from '../../components/Map';
 import { ButtonIcon } from '../../components/ButtonIcon';
 import { Header } from '../../components/Header';
 import { Button } from '../../components/Button';
@@ -31,6 +33,7 @@ export function Arrival() {
   const title = historic?.status === 'departure' ? 'Chegada' : 'Detalhes';
 
   const [dataNotSynced, setDataNotSynced] = useState(false);
+  const [coordinates, setCoordinates] = useState<LatLng[]>([]);
 
   function handleRemoveVehicleUsage() {
     Alert.alert(
@@ -79,6 +82,7 @@ export function Arrival() {
     setDataNotSynced(updatedAt > lastSync);
 
     const locationsStorage = await getStorageLocations();
+    setCoordinates(locationsStorage);
   };
 
   useEffect(() => {
@@ -88,6 +92,10 @@ export function Arrival() {
   return (
     <Container>
       <Header title={title} />
+
+      {coordinates.length > 0 && (
+        <Map coordinates={coordinates} />
+      )}
 
       <Content>
         <Label>
