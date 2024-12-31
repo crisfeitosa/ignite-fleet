@@ -24,12 +24,13 @@ module.exports = {
         "googleMapsApiKey": process.env.GOOGLE_MAPS_API_KEY
       },
       "infoPlist": {
-      "CFBundleURLTypes": [
-        {
-          "CFBundleURLSchemes": ["com.googleusercontent.apps.1024345003584-euvlgooh4qn7hfgb07mk2btro64sb6i9"]
-        }
-      ]
-    }
+        "UIBackgroundModes": ["location"],
+        "CFBundleURLTypes": [
+          {
+            "CFBundleURLSchemes": ["com.googleusercontent.apps.1024345003584-euvlgooh4qn7hfgb07mk2btro64sb6i9"]
+          }
+        ]
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -41,7 +42,12 @@ module.exports = {
         "googleMaps": {
           "apiKey": process.env.GOOGLE_MAPS_API_KEY
         } 
-      }
+      },
+      "permissions": [
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_BACKGROUND_LOCATION"
+      ],
     },
     "web": {
       "favicon": "./assets/favicon.png"
