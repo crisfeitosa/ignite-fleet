@@ -1,7 +1,11 @@
 import axios from 'axios';
-import { LocationObjectCoords } from 'expo-location';
 
-export async function getAddressLocation({ latitude, longitude }: LocationObjectCoords) {
+type Props = {
+  latitude: number;
+  longitude: number;
+};
+
+export async function getAddressLocation({ latitude, longitude }: Props) {
   try {
     const response = await axios
     .get(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`);
