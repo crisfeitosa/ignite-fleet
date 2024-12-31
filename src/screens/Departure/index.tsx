@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { TextInput, ScrollView, Alert } from 'react-native';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import { startLocationTask } from '../../tasks/backgroundLocationTask';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { useNavigation } from '@react-navigation/native';
 import { 
   requestBackgroundPermissionsAsync,
@@ -69,6 +70,8 @@ export function Departure() {
         setIsRegistering(false);
         return Alert.alert('Localização', 'É necessário permitir que o App tenha acesso localização em segundo plano. Acesse as configurações do dispositivo e habilite "Permitir o tempo todo."')
       };
+
+      await startLocationTask();
 
       realm.write(() => {
         realm.create('Historic', Historic.generate({
