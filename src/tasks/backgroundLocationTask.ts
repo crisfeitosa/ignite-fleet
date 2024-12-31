@@ -1,4 +1,5 @@
 import * as TaskManager from 'expo-task-manager';
+
 export const BACKGROUND_TASK_NAME =  'location-tracking';
 
 TaskManager.defineTask(BACKGROUND_TASK_NAME, ({ data, error }: any) => {
