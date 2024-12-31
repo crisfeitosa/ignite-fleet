@@ -96,7 +96,7 @@ export function Departure() {
       getAddressLocation(location.coords)
       .then(address => {
         if(address) {
-          setCurrentAddress(address);
+          setCurrentAddress(address.display_name);
         }
       })
       .finally(() => setIsLoadingLocation(false))
